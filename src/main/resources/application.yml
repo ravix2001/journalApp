@@ -1,0 +1,39 @@
+#           for application.properties -> use this format
+
+#spring.data.mongodb.uri = mongodb+srv://ravipandit20580716:qNVfIUvWGK0MiiOG@cluster0.ozvxacj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+#spring.data.mongodb.database = journaldb
+#spring.data.mongodb.auto-index-creation = true
+#spring.main.allow-circular-references = true
+#server.port = 8081
+#server.servlet.context-path = /journal
+
+#           for application.yml -> use this format
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://ravipandit20580716:qNVfIUvWGK0MiiOG@cluster0.ozvxacj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+
+  main:
+    allow-circular-references: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /journal
+
+
+#           for command line -> use this method
+
+#  .\mvnw clean
+#  .\mvnw package
+#  java -jar .\journalApp-0.0.1-SNAPSHOT.jar --property=value
+#  define property and value according to your need as above in the command line
+#  for eg:
+#  java -jar .\journalApp-0.0.1-SNAPSHOT.jar --server.port = 8081
+
+#           precedence/priority order: highest to lowest
+#       command line > application.properties > application.yml
+#   YAML is a convenient format for specifying hierarchical configuration data.
