@@ -1,5 +1,6 @@
 package com.ravi.journalApp.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Document(collection = "users")
 @Data
+@Builder        //this was used for testing purpose
 public class User {
 
     @Id

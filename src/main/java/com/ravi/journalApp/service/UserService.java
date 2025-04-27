@@ -25,10 +25,16 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void saveNewUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(List.of("USER"));
-        userRepository.save(user);
+    public boolean saveNewUser(User user) {
+        try{
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoles(List.of("USER"));
+            userRepository.save(user);
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     public void saveAdmin(User user) {

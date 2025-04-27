@@ -15,8 +15,6 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-//  sabai user sanga admin ko role xa teslaai milaaunu parxa
-
     @GetMapping("/all-users")
     public ResponseEntity<?> getAll() {
         List<User> all = userService.getAll();
