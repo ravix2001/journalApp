@@ -1,3 +1,6 @@
+#filename => application.yml
+
+
 #           for application.properties -> use this format
 
 #spring.data.mongodb.uri = mongodb+srv://ravipandit20580716:qNVfIUvWGK0MiiOG@cluster0.ozvxacj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
@@ -37,3 +40,10 @@ server:
 #           precedence/priority order: highest to lowest
 #       command line > application.properties > application.yml
 #   YAML is a convenient format for specifying hierarchical configuration data.
+
+
+#use this to select the environment
+
+#spring:
+#  profiles:
+#    active: dev    /   active: prod
