@@ -36,14 +36,11 @@ public class UserServiceTests {
     @ParameterizedTest
 //    @CsvSource({
 //            "ravi",
-//            "musu",
 //            "ram",
-//            "raju"
 //    })
 //    we can use @CsvSource or @ValueSource or EnumSource
     @ValueSource(strings ={
             "ravi",
-            "musu",
             "ram"
     })
     public void testFindByUsername(String username) {

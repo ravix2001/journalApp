@@ -15,7 +15,8 @@ import java.util.List;
 
 @Document(collection = "users")
 @Data
-@Builder        //this was used for testing purpose
+//@Builder        //this was used for testing purpose
+// solve the error here use constructor injection instead of builder pattern
 public class User {
 
     @Id
