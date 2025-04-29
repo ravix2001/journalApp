@@ -1,8 +1,6 @@
 package com.ravi.journalApp.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,8 +13,9 @@ import java.util.List;
 
 @Document(collection = "users")
 @Data
-//@Builder        //this was used for testing purpose
-// solve the error here use constructor injection instead of builder pattern
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder        //this was used for testing purpose
 public class User {
 
     @Id
