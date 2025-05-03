@@ -32,7 +32,11 @@ public class UserService {
             userRepository.save(user);
             return true;
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            log.error("Error while saving user: {}", e.getMessage());
+            log.warn("This is a warning message");
+            log.info("This is an info message");
+            log.debug("This is a debug message");
+            log.trace("This is a trace message");
             return false;
         }
     }

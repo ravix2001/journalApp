@@ -19,6 +19,12 @@ target/
 **/application-dev.yml
 **/application-prod.yml
 
+#we can also add simply like this
+#*.yml
+
+#logfiles
+*.log
+
 
 ### IntelliJ IDEA ###
 .idea
