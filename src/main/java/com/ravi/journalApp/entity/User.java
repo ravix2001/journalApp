@@ -13,7 +13,7 @@ import java.util.List;
 
 @Document(collection = "users")
 @Data
-@NoArgsConstructor
+@NoArgsConstructor      // to use @Builder we need to use @NoArgsConstructor and @AllArgsConstructor together otherwise error will occur
 @AllArgsConstructor
 @Builder        //this was used for testing purpose
 public class User {
@@ -32,5 +32,9 @@ public class User {
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
     private List<String> roles = new ArrayList<>();
+
+    private String email;
+
+    private boolean sentimentAnalysis;
 
 }

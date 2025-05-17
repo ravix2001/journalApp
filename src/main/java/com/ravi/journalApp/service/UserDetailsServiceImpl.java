@@ -5,11 +5,11 @@ import com.ravi.journalApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @Slf4j  // If using Lombok, or define a Logger manually
 public class UserDetailsServiceImpl implements UserDetailsService {
 
