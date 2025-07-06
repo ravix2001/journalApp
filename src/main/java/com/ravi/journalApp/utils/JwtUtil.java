@@ -19,7 +19,7 @@ public class JwtUtil {
     @Value( "${jwt.secret.key}")
     private String SECRET_KEY;
 
-    private static final long JWT_TOKEN_VALIDITY = 60 * 5;      // 5 minutes expiration time
+    private static final long JWT_TOKEN_VALIDITY = 60 * 10;      // 10 minutes expiration time
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
