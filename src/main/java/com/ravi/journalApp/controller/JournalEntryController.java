@@ -38,10 +38,7 @@ public class JournalEntryController {
         String username = authentication.getName();
         User user = userService.findByUsername(username);
         List<JournalEntry> all = user.getJournalEntries();
-        if(all != null && !all.isEmpty()){
-            return new ResponseEntity<>(all, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
     @PostMapping

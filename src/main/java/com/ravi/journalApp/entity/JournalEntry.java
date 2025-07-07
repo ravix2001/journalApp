@@ -1,5 +1,7 @@
 package com.ravi.journalApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -16,7 +18,13 @@ import java.time.LocalDateTime;
 public class JournalEntry {
 
     @Id
+    @JsonIgnore
     private ObjectId id;
+
+    @JsonProperty("id") // This exposes the string version in JSON
+    public String getIdAsString() {
+        return id != null ? id.toHexString() : null;
+    }
 
     @NonNull
     private String title;

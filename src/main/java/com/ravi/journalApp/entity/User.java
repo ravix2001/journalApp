@@ -1,5 +1,7 @@
 package com.ravi.journalApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -19,12 +21,19 @@ import java.util.List;
 public class User {
 
     @Id
+    @JsonIgnore
     private ObjectId id;
+
+    @JsonProperty("id") // This exposes the string version in JSON
+    public String getIdAsString() {
+        return id != null ? id.toHexString() : null;
+    }
 
     @Indexed(unique = true)
     @NonNull
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NonNull
     private String password;
 
