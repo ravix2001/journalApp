@@ -16,6 +16,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+
 @Slf4j
 @RestController
 @RequestMapping("/public")
@@ -69,7 +71,9 @@ public class PublicController {
         newUser.setSentimentAnalysis(user.isSentimentAnalysis());
         newUser.setEmail(user.getEmail());
         userService.saveNewUser(newUser);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+
+        String jwtToken = jwtUtil.generateToken(user.getUsername());
+        return new ResponseEntity<>(Collections.singletonMap("token", jwtToken), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
@@ -81,7 +85,8 @@ public class PublicController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
             String jwtToken = jwtUtil.generateToken(userDetails.getUsername());
-            return new ResponseEntity<>(jwtToken, HttpStatus.OK);
+            return new ResponseEntity<>(Collections.singletonMap("token", jwtToken)
+                    , HttpStatus.OK);
         }catch (Exception e){
             log.error("Error while logging in: {}", e.getMessage());
             return new ResponseEntity<>("Invalid username or password", HttpStatus.BAD_REQUEST);
