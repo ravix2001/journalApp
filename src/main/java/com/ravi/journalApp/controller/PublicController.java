@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -65,6 +66,9 @@ public class PublicController {
     @PostMapping("/signup")
     @Operation(summary = "Create/Signup a new user")
     public ResponseEntity<?> signup(@RequestBody UserDTO user) {
+        if (userService.findByUsername(user.getUsername()) != null) {
+            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+        }
         User newUser = new User();
         newUser.setUsername(user.getUsername());        // get username from request body(i.e. UserDTO) and save it in User entity
         newUser.setPassword(user.getPassword());        // lly for these
@@ -85,8 +89,8 @@ public class PublicController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
             String jwtToken = jwtUtil.generateToken(userDetails.getUsername());
-            return new ResponseEntity<>(Collections.singletonMap("token", jwtToken)
-                    , HttpStatus.OK);
+            String userRole  = userDetails.getAuthorities().stream().findFirst().orElse(null).getAuthority();
+            return new ResponseEntity<>(Map.of("token", jwtToken, "role", userRole), HttpStatus.OK);
         }catch (Exception e){
             log.error("Error while logging in: {}", e.getMessage());
             return new ResponseEntity<>("Invalid username or password", HttpStatus.BAD_REQUEST);

@@ -25,8 +25,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private WeatherService weatherService;
 
     @PutMapping
@@ -48,7 +46,7 @@ public class UserController {
     public ResponseEntity<?> deleteByUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        userRepository.deleteByUsername(username);
+        userService.deleteByUsername(username);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

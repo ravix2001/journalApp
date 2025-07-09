@@ -41,8 +41,8 @@ public class UserService {
         }
     }
 
-    public void saveAdmin(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public void saveAdmin(ObjectId id) {
+        User user = userRepository.findById(id).get();
         user.setRoles(List.of("USER", "ADMIN"));
         userRepository.save(user);
     }
@@ -57,6 +57,10 @@ public class UserService {
 
     public void deleteById(ObjectId id) {
         userRepository.deleteById(id);
+    }
+
+    public void deleteByUsername(String username) {
+        userRepository.deleteByUsername(username);
     }
 
     public User findByUsername(String username) {
