@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/public")
+//@RequestMapping("/public")
 @Tag(name = "Public API", description = "health-check, login and signup")
 public class PublicController {
 
