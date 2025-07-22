@@ -50,6 +50,6 @@ public class UserScheduler {
         appCache.init();
     }
 //    this is scheduled for clearing app cache every week
-//    if want to clear app cache manually then you can call admin/clear-app-cache endpoint
+//    if you want to clear app cache manually then you can call admin/clear-app-cache endpoint
 
 }
